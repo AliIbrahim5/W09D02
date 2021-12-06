@@ -31,7 +31,7 @@ const getAllTodo = (req, res) => {
 };
 
 const getTodoById = (req, res) => {
-  const { id } = req.query;
+  const { id } = req.params;
   todoModel
     .findOne({ _id: id, isDel: false })
     .then((result) => {
