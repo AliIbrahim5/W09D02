@@ -1,0 +1,53 @@
+Cannot find module '../db'
+
+امتداد الملف  كان من المفروض ./db
+
+
+Cannot find module 'mongoose'
+خطاء بتنصيب المونقوز
+
+
+module './../../db/models/todos'
+
+خطاء فس امتداد الملف
+
+Cannot find module 'mongose'
+خطاء في كتابة الموونقوز
+
+
+mongoose.module is not a function
+
+خطاء في كتابة الموديول 
+
+
+Route.get() requires a callback function but got a [object Undefined]
+
+module.exports
+
+
+createTodo is not defined
+عدم استدعائها بالموديول اكسبورت
+
+app.use() requires a middleware function
+
+morgan is not defined
+استدعاء المورقن ريكواير
+
+SyntaxError: Identifier 'cors' has already been declared
+بمكان الاستدعاء
+
+listen EACCES: permission denied 4000;
+
+بالفاصله  
+
+DB_URI
+DB_URL
+
+كانت ترو وحولتها فولس
+required: false
+
+تغير الايرور من كونكت الى نو كونكت
+DB no connected
+
+
+
