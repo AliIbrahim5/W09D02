@@ -1,99 +1,14 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-// const URL = "http://localhost:5000";
-// const Post = () => {
-//   const navigate = useNavigate();
-//   const token = localStorage.getItem("token");
-//   const [data, setData] = useState([]);
-
-//   const getPosts = async () => {
-//     try {
-//       const result = await axios.get(`${URL}/tasks`, {
-//         headers: { Authorization: `bearer ${token}` },
-//       });
-//       console.log(result);
-//       setData(result.data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   const del = async (_id) => {
-//     try {
-//       const result = await axios.delete(`${URL}/taskdelet/${_id}`, {
-//         headers: { Authorization: `bearer ${token}` },
-//       });
-//       getPosts();
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   const tasks = async (e) => {
-//     try {
-//       e.preventDefault();
-//       const result = await axios.post(
-//         `${URL}/task`,
-//         {
-//           name: e.target.task.value,
-//         },
-//         {
-//           headers: { Authorization: `bearer ${token}` },
-//         }
-//       );
-//       e.target.task.value = " ";
-//       getPosts();
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   useEffect(() => {
-//     getPosts();
-//   }, []);
-
-//   return (
-    
-      
-//         <div>
-//           <h1>tasks:</h1>
-//           {data.map((item) => {
-//             return (
-//               <>
-//                 <h2 style={{ display: "inline" }}>{item.name}</h2>
-//                 <button onClick={(_id) => del(item._id)}>x</button>
-//                 <br />
-//               </>
-//             );
-//           })}
-//           <form onSubmit={tasks}>
-//             <p>New tsks:</p>
-
-//             <input type="text" name="task" />
-//             <button type="submit">Add</button>
-//           </form>
-//           <button
-//             onClick={() => {
-//               navigate("/");
-//             }}
-//           >
-//             Back
-//           </button>
-//         </div>
-      
-  
-//   );
-// };
-
-// export default Post;
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-
+import dotenv from "dotenv";
 // import "./style.css";
+dotenv.config();
+// let URL = process.env.REACT_APP_URL;
+// console.log(URL);
 const URL = "http://localhost:5000";
+
 const Todos = () => {
   const [token, setToken] = useState("");
   const [role, setRole] = useState("");
@@ -143,6 +58,7 @@ const Todos = () => {
 
   const updatetask = async (id) => {
     try {
+      console.log(id);
       const { value: updetatasks } = await Swal.fire({
         title: "Updated task",
         input: "text",
@@ -153,7 +69,7 @@ const Todos = () => {
       });
 
       if (updetatasks) {
-        await axios.put(
+                  await axios.put(
           `${URL}/tasksupdeta/${id}`,
           {
             name: updetatasks,
@@ -170,7 +86,6 @@ const Todos = () => {
       console.log(error);
     }
   };
-
   const deletetask = async (id) => {
     try {
       await axios.delete(`${URL}/taskdelet/${id}`, {
